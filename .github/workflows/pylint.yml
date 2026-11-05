@@ -1,0 +1,22 @@
+name: Pylint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: download uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: download dependencies
+        run: uv sync
+
+      - name: run pylint
+        run: uv run pylint src
