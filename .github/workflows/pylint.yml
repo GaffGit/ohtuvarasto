@@ -12,11 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: download uv
-        uses: astral-sh/setup-uv@v6
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10.1.0
+        with:
+          python-version: "3.14"
 
-      - name: download dependencies
+      - name: Download dependencies
         run: uv sync
 
-      - name: run pylint
+      - name: Run pylint
         run: uv run pylint src
